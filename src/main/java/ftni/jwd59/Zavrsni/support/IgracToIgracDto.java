@@ -18,9 +18,10 @@ public class IgracToIgracDto  implements Converter<Igrac, IgracDTO>{
 		IgracDTO dto= new IgracDTO();
 		dto.setId(igrac.getId());
 		dto.setIme(igrac.getIme());
-		//napisao sam za prezime getIme()
 		dto.setPrezime(igrac.getPrezime());
 		dto.setPostignutiGolovi(igrac.getPostignutiGolovi());
+		dto.setReprezentacijaId(igrac.getReprezentacija().getId());
+		dto.setReprezentacijaNaziv(igrac.getReprezentacija().getNaziv());
 		return dto;
 	}
 	

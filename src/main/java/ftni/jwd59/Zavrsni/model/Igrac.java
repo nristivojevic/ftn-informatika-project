@@ -1,5 +1,6 @@
 package ftni.jwd59.Zavrsni.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Igrac {
 	@Column
 	private int postignutiGolovi;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Reprezentacija reprezentacija;
 
 	public Long getId() {

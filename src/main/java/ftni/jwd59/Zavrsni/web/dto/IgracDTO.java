@@ -10,6 +10,10 @@ public class IgracDTO {
 	private String prezime;
 	
 	private int postignutiGolovi;
+	
+	private Long reprezentacijaId;
+
+	private String reprezentacijaNaziv;
 
 	public Long getId() {
 		return id;
@@ -41,6 +45,22 @@ public class IgracDTO {
 
 	public void setPostignutiGolovi(int postignutiGolovi) {
 		this.postignutiGolovi = postignutiGolovi;
+	}
+
+	public Long getReprezentacijaId() {
+		return reprezentacijaId;
+	}
+
+	public void setReprezentacijaId(Long reprezentacijaId) {
+		this.reprezentacijaId = reprezentacijaId;
+	}
+
+	public String getReprezentacijaNaziv() {
+		return reprezentacijaNaziv;
+	}
+
+	public void setReprezentacijaNaziv(String reprezentacijaNaziv) {
+		this.reprezentacijaNaziv = reprezentacijaNaziv;
 	}
 	
 	

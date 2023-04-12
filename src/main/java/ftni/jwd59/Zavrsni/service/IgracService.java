@@ -15,5 +15,5 @@ public interface IgracService {
 
 	Igrac delete(Long id);
 	
-	Page<Igrac>find(Long reprezentacijaId, int pageNo);
+	Page<Igrac>find(Integer odGol, Integer doGol, int pageNo);
 }

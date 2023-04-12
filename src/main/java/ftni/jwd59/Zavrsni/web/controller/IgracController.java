@@ -41,11 +41,12 @@ public class IgracController {
 
 	@PreAuthorize("permitAll()")
 	@GetMapping
-	public ResponseEntity<List<IgracDTO>> getAll(@RequestParam(required = false) Long reprezentacijaId,
+	public ResponseEntity<List<IgracDTO>> getAll(@RequestParam(required = false) Integer odGol,
+			@RequestParam(required = false) Integer doGol,
 			@RequestParam(value = "pageNo", defaultValue = "0") int pageNo) {
 
 		Page<Igrac> page;
-		page = service.find(reprezentacijaId, pageNo);
+		page = service.find(odGol,doGol, pageNo);
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Total-Pages", Integer.toString(page.getTotalPages()));

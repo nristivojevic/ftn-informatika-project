@@ -43,10 +43,10 @@ public class JpaIgracService implements IgracService {
 	}
 
 	@Override
-	public Page<Igrac> find(Long reprezentacijaId, int pageNo) {
-		if (reprezentacijaId == null) {
+	public Page<Igrac> find(Integer odGol, Integer doGol, int pageNo) {
+		if (odGol == null || doGol == null) {
 			return repository.findAll(PageRequest.of(pageNo, 5));
 		}
-		return repository.findByReprezentacijaId(reprezentacijaId, PageRequest.of(pageNo, 3));
+		return repository.findByPostignutiGoloviBetween(odGol,doGol, PageRequest.of(pageNo, 3));
 	}
 }

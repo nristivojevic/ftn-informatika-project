@@ -13,8 +13,8 @@ public interface IgracRepository extends JpaRepository<Igrac, Long> {
 	Igrac findOneById(Long id);
 
 	Page<Igrac> findAll(Pageable pageable);
-	
-	Page<Igrac> findByReprezentacijaIdAndPostignutiGoloviBetween(Long reprezentacijaId,Integer odGol, Integer doGol, Pageable pageable);
 
-	Page<Igrac> findByPostignutiGoloviBetween(Integer odGol, Integer doGol, Pageable pageable);
+	Page<Igrac> findByPostignutiGoloviBetween(Integer odGol, Integer doGol,
+			Pageable pageable);
+
 }

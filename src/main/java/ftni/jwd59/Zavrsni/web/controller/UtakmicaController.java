@@ -92,7 +92,10 @@ public class UtakmicaController {
 		Utakmica e = to.convert(dto);
 		if (e.getReprezentacijaA() == null && e.getReprezentacijaB() == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+		}else
+			if (e.getReprezentacijaA().equals(e.getReprezentacijaB())) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
 		Utakmica sacuvan = service.save(e);
 		return new ResponseEntity<>(toDto.convert(sacuvan), HttpStatus.OK);
 

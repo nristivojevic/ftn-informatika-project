@@ -4,6 +4,7 @@ package ftni.jwd59.Zavrsni.service.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import ftni.jwd59.Zavrsni.model.Igrac;
@@ -43,10 +44,23 @@ public class JpaIgracService implements IgracService {
 	}
 
 	@Override
-	public Page<Igrac> find(Integer odGol, Integer doGol, int pageNo) {
-		if (odGol == null || doGol == null) {
-			return repository.findAll(PageRequest.of(pageNo, 5));
+	public Page<Igrac> find(Long reprezentacijaId, Integer odGol, Integer doGol, int pageNo) {
+		if (odGol == null) {
+			odGol=Integer.MIN_VALUE;
 		}
-		return repository.findByPostignutiGoloviBetween(odGol,doGol, PageRequest.of(pageNo, 3));
+		if (doGol== null) {
+			doGol=Integer.MAX_VALUE;
+		}
+		if (reprezentacijaId==null) {
+			return repository.findByPostignutiGoloviBetween(odGol, doGol, PageRequest.of(pageNo, 5, Sort.by("postignutiGolovi").descending()));
+		}
+		return repository.findByReprezentacijaIdAndPostignutiGoloviBetween(reprezentacijaId, odGol, doGol, PageRequest.of(pageNo, 5, Sort.by("postignutiGolovi").descending()));
 	}
+
+	@Override
+	public Page<Igrac> search(Integer odGol, Integer doGol, int pageNo) {
+		return repository.findByPostignutiGoloviBetween(odGol, doGol, PageRequest.of(pageNo, 5, Sort.by("postignutiGolovi").descending()));
+	}
+
+
 }
